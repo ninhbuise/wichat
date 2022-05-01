@@ -1,0 +1,12 @@
+.login  {
+    height: 100vh;
+    background-image: url('/public/img/login_layout.png');
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+#sigin {
+    margin-top: 6%;
+    margin-left: 62%;
+    position: absolute;
+}
