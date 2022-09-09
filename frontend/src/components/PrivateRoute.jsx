@@ -1,11 +1,10 @@
 import React from 'react'
-//import AuthService from './Services/AuthService'
-import { Navigate, Route } from 'react-router-dom'
+import { useKeycloak } from '@react-keycloak/web'
+import { Navigate, Outlet } from 'react-router-dom';
 
-const isAuthenticated = false //AuthService.isLoggedIn()
-
-const PrivateRoute = ({ }) => {
-  return isAuthenticated ? true : <Navigate to="/signin" />;
-};
+const PrivateRoute = () => {
+  const { keycloak } = useKeycloak()
+  return keycloak?.authenticated ? <Outlet /> : <Navigate to="/login" />
+}
 
 export default PrivateRoute

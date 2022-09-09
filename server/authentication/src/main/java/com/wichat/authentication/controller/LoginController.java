@@ -22,7 +22,7 @@ public class LoginController {
     @Autowired
     LoginService loginService;
 
-    @PostMapping("login")
+    @PostMapping("/login")
     public ResponseEntity<LoginResponse> login(HttpServletRequest request, @RequestBody LoginRequest loginRequest) throws Exception {
         log.info("Executing login");
 
