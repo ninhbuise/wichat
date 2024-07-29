@@ -1,0 +1,40 @@
+server:
+  port: 8081
+  debug: true
+  servlet:
+    context-path: /wichat-app
+
+logging:
+  level:
+    root: DEBUG
+    org.springframework.web: DEBUG
+    org.keycloak: DEBUG
+
+jwt:
+  auth:
+    converter:
+      resource-id: wichat-app
+      principle-attribute: preferred_username
+
+keycloak:
+  realm: wichat
+  domain: http://localhost:8080
+  admin-client-id: admin-cli
+  admin-client-secret: 78LeBYCFgnc0GUGD9ovJiIVek7eqoLqb
+  urls:
+    auth: ${keycloak.domain}
+  uri:
+    authorization: ${keycloak.domain}/realms/${keycloak.realm}/protocol/openid-connect/auth
+    token: ${keycloak.domain}/realms/${keycloak.realm}/protocol/openid-connect/token
+    logout: ${keycloak.domain}/realms/${keycloak.realm}/protocol/openid-connect/logout
+    jwk-set: ${keycloak.domain}/realms/${keycloak.realm}/protocol/openid-connect/certs
+  client:
+    client_id: wichat-app
+    client_secret: GUbBbuQUG9z3ORT2GSKKsredf5R3uuXn
+    authorization-grant-type: password
+    # false if required user verify email
+    email-verified: true
+  admin:
+    client-realms: wichat
+    id: admin
+    pw: admin
